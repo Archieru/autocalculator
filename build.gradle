@@ -1,0 +1,21 @@
+group 'com.bar42'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'com.codeborne:selenide:4.4.1'
+}
+
+task runTests(type: Test) {
+    options {
+        systemProperties = System.getProperties()
+    }
+    include '**/*exness*'
+}
