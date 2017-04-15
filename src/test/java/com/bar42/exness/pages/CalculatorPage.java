@@ -1,12 +1,14 @@
 package com.bar42.exness.pages;
 
 import com.bar42.exness.extenders.CalcRow;
+import com.bar42.exness.extenders.CalculationFormulasBlock;
 import com.bar42.exness.extenders.ResultRow;
 import com.bar42.exness.extenders.Selector;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.bar42.exness.extenders.CalcRow.CalcType.*;
 import static com.bar42.exness.extenders.ResultRow.ResultType.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class CalculatorPage extends BasePage
 {
@@ -14,6 +16,16 @@ public class CalculatorPage extends BasePage
     protected String getPageUrl()
     {
         return "https://www.exness.com/intl/ru/tools/calculator/,";
+    }
+    
+    public CalculationFormulasBlock formulas()
+    {
+        return new CalculationFormulasBlock($(".calc-rowFormulas"));
+    }
+    
+    public SelenideElement conversionPairs()
+    {
+        return $("#conversion_pairs");
     }
     
     public Selector accountTypeSelect()

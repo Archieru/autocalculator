@@ -1,7 +1,10 @@
 package com.bar42.exness.steps;
 
 import com.bar42.exness.pages.CalculatorPage;
+import com.codeborne.selenide.Condition;
 import org.junit.Assert;
+
+import static com.codeborne.selenide.Condition.text;
 
 public class CalculatorPageSteps extends BaseStep
 {
@@ -13,7 +16,7 @@ public class CalculatorPageSteps extends BaseStep
         return this;
     }
 
-    public CalculatorPageSteps withinstrument(String instrument)
+    public CalculatorPageSteps withInstrument(String instrument)
     {
         calculatorPage.instrumentSelect().select(instrument);
         return this;
@@ -31,9 +34,11 @@ public class CalculatorPageSteps extends BaseStep
         return this;
     }
 
-    public CalculatorPageSteps withLotSize(int lotSize)
+    public CalculatorPageSteps withLotSize(float lotSize)
     {
-        calculatorPage.lotSizeInput().sendKeys("" + lotSize);
+        calculatorPage.lotSizeInput().sendKeys(
+            String.valueOf(lotSize).replace('.', ',')
+        );
         return this;
     }
 
@@ -120,10 +125,82 @@ public class CalculatorPageSteps extends BaseStep
         Assert.assertNotEquals(0, calculatorPage.volumeRow().getValue());
         return this;
     }
-
+    
     public CalculatorPageSteps validateVolume(long expected)
     {
         Assert.assertEquals(expected, calculatorPage.volumeRow().getValue(), 0);
         return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsMargin(String expected)
+    {
+        calculatorPage.formulas().marginCalculations().shouldHave(text(expected));
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsComission(String expected)
+    {
+        calculatorPage.formulas().commissionCalculations().shouldHave(text(expected));
+        return this;
+    }
+
+    public CalculatorPageSteps validateCalculationsProfit(String expected)
+    {
+        calculatorPage.formulas().profitCalculations().shouldHave(text(expected));
+        return this;
+    }
+
+    public CalculatorPageSteps validateCalculationsSwapLong(String expected)
+    {
+        calculatorPage.formulas().swapLongCalculations().shouldHave(text(expected));
+        return this;
+    }
+
+    public CalculatorPageSteps validateCalculationsSwapShort(String expected)
+    {
+        calculatorPage.formulas().swapShortCalculations().shouldHave(text(expected));
+        return this;
+    }
+
+    public CalculatorPageSteps validateCalculationsVolume(String expected)
+    {
+        calculatorPage.formulas().volumeCalculations().shouldHave(text(expected));
+        return this;
+    }
+
+    public CalculatorPageSteps validateConversionPairs(String currency)
+    {
+        calculatorPage.conversionPairs().shouldHave(text(currency));
+        return this;
+    }
+
+    public CalculatorPageSteps validateCalculationsMargin(float expected)
+    {
+        return validateCalculationsMargin(String.valueOf(expected));
+    }
+    
+    public CalculatorPageSteps validateCalculationsComission(float expected)
+    {
+        return validateCalculationsComission(String.valueOf(expected));
+    }
+
+    public CalculatorPageSteps validateCalculationsProfit(float expected)
+    {
+        return validateCalculationsProfit(String.valueOf(expected));
+    }
+
+    public CalculatorPageSteps validateCalculationsSwapLong(float expected)
+    {
+        return validateCalculationsSwapLong(String.valueOf(expected));
+    }
+
+    public CalculatorPageSteps validateCalculationsSwapShort(float expected)
+    {
+        return validateCalculationsSwapShort(String.valueOf(expected));
+    }
+
+    public CalculatorPageSteps validateCalculationsVolume(float expected)
+    {
+        return validateCalculationsVolume(String.valueOf(expected));
     }
 }
