@@ -81,6 +81,7 @@ public class ClassicFuturesTest extends BaseTest
         
         onCalculatorPage
             .withBaseCurrency("AUD")
+            .calculate()
             .validateConversionPairs("AUD")
             .validateConversionPairs("USD");
     }

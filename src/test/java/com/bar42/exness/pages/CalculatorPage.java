@@ -15,7 +15,7 @@ public class CalculatorPage extends BasePage
     @Override
     protected String getPageUrl()
     {
-        return "https://www.exness.com/intl/ru/tools/calculator/,";
+        return "https://www.exness.eu/intl/ru/tools/calculator/,";
     }
     
     public CalculationFormulasBlock formulas()
@@ -59,7 +59,7 @@ public class CalculatorPage extends BasePage
     public SelenideElement lotSizeInput()
     {
         SelenideElement baseElement = new CalcRow(LOT)
-            .$_(".calc-colFormInput>.ui-select");
+            .$_(".calc-colFormInput>.ui-input");
         return baseElement;
     }
 
@@ -80,7 +80,7 @@ public class CalculatorPage extends BasePage
     public SelenideElement calculateButton()
     {
         SelenideElement baseElement = new CalcRow(CALCULATE)
-            .$_(".calc-colFormInput>.ui-select");
+            .$_(".calc-colFormBtn>button");
         return baseElement;
     }
     

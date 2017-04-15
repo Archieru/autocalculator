@@ -36,6 +36,7 @@ public class CalculatorPageSteps extends BaseStep
 
     public CalculatorPageSteps withLotSize(float lotSize)
     {
+        calculatorPage.lotSizeInput().clear();
         calculatorPage.lotSizeInput().sendKeys(
             String.valueOf(lotSize).replace('.', ',')
         );

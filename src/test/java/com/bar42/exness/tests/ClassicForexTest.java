@@ -82,6 +82,7 @@ public class ClassicForexTest extends BaseTest
         onCalculatorPage
             .withSymbol("AUDCAD")
             .withBaseCurrency("USD")
+            .calculate()
             .validateConversionPairs("USD")
             .validateConversionPairs("AUD")
             .validateConversionPairs("CAD");
@@ -94,6 +95,7 @@ public class ClassicForexTest extends BaseTest
         onCalculatorPage
             .withSymbol("AUDCAD")
             .withBaseCurrency("AUD")
+            .calculate()
             .validateConversionPairs("AUD")
             .validateConversionPairs("CAD");
     }

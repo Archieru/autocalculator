@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.text;
 
 public class Selector extends BaseExtender
 {
@@ -14,10 +15,10 @@ public class Selector extends BaseExtender
     
     public void select(String option)
     {
-        if (getCurrentlySelected().equals(option)) { return; }
+        if (getCurrentlySelected().contains(option)) { return; }
         
         getCall().click();
-        ElementsCollection options = getSelectItems().filter(exactText(option));
+        ElementsCollection options = getSelectItems().filter(text(option));
         if (options.size() != 1)
         {
             throw new RuntimeException(

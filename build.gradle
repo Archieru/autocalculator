@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    testCompile 'com.codeborne:selenide:4.4.1'
+    testCompile 'com.codeborne:selenide:4.3'
 }
 
 task runTests(type: Test) {

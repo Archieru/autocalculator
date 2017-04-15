@@ -80,7 +80,8 @@ public class CentTest extends BaseTest
         
         onCalculatorPage
             .withSymbol("AUDCADc")
-            .withBaseCurrency("USD")
+            .withBaseCurrency("USC")
+            .calculate()
             .validateConversionPairs("USD")
             .validateConversionPairs("USC")
             .validateConversionPairs("AUD")
@@ -92,8 +93,9 @@ public class CentTest extends BaseTest
     {
         
         onCalculatorPage
-            .withSymbol("AUDCAD")
+            .withSymbol("AUDCADc")
             .withBaseCurrency("AUC")
+            .calculate()
             .validateConversionPairs("AUD")
             .validateConversionPairs("AUC")
             .validateConversionPairs("CAD");
