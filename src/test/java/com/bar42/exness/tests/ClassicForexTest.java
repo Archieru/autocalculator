@@ -46,13 +46,13 @@ public class ClassicForexTest extends BaseTest
     }
     
     @Test
-    public void testMarginCalculator()
+    public void testMarginCalculations()
     {
         onCalculatorPage.validateCalculationsMargin(BASE_LOT_SIZE);
     }
     
     @Test
-    public void testProfitCalculator()
+    public void testProfitCalculations()
     {
         onCalculatorPage.validateCalculationsProfit(BASE_LOT_SIZE);
     }
@@ -73,6 +73,36 @@ public class ClassicForexTest extends BaseTest
     public void testVolumeCalculations()
     {
         onCalculatorPage.validateCalculationsVolume(BASE_LOT_SIZE);
+    }
+    
+    @Test
+    public void testMarginCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultMargin();
+    }
+    
+    @Test
+    public void testProfitCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultProfit();
+    }
+    
+    @Test
+    public void testSwapLongCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultSwapLong();
+    }
+    
+    @Test
+    public void testSwapShortCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultSwapShort();
+    }
+    
+    @Test
+    public void testVolumeCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultVolume();
     }
     
     @Test
@@ -98,5 +128,14 @@ public class ClassicForexTest extends BaseTest
             .calculate()
             .validateConversionPairs("AUD")
             .validateConversionPairs("CAD");
+    }
+    
+    @Test
+    public void testLeverage()
+    {
+        onCalculatorPage
+            .withLeverage("1888")
+            .calculate()
+            .validateCalculationsMargin("1888");
     }
 }

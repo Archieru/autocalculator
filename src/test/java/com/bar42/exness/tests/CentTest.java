@@ -45,13 +45,13 @@ public class CentTest extends BaseTest
     }
 
     @Test
-    public void testMarginCalculator()
+    public void testMarginCalculations()
     {
         onCalculatorPage.validateCalculationsMargin(BASE_LOT_SIZE);
     }
 
     @Test
-    public void testProfitCalculator()
+    public void testProfitCalculations()
     {
         onCalculatorPage.validateCalculationsProfit(BASE_LOT_SIZE);
     }
@@ -72,6 +72,36 @@ public class CentTest extends BaseTest
     public void testVolumeCalculations()
     {
         onCalculatorPage.validateCalculationsVolume(BASE_LOT_SIZE);
+    }
+
+    @Test
+    public void testMarginCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultMargin();
+    }
+
+    @Test
+    public void testProfitCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultProfit();
+    }
+
+    @Test
+    public void testSwapLongCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultSwapLong();
+    }
+
+    @Test
+    public void testSwapShortCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultSwapShort();
+    }
+
+    @Test
+    public void testVolumeCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultVolume();
     }
 
     @Test
@@ -99,5 +129,14 @@ public class CentTest extends BaseTest
             .validateConversionPairs("AUD")
             .validateConversionPairs("AUC")
             .validateConversionPairs("CAD");
+    }
+    
+    @Test
+    public void testLeverage()
+    {
+        onCalculatorPage
+            .withLeverage("1888")
+            .calculate()
+            .validateCalculationsMargin("1888");
     }
 }

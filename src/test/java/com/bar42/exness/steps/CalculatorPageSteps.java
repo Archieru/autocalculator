@@ -1,7 +1,7 @@
 package com.bar42.exness.steps;
 
 import com.bar42.exness.pages.CalculatorPage;
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.Assert;
 
 import static com.codeborne.selenide.Condition.text;
@@ -203,5 +203,65 @@ public class CalculatorPageSteps extends BaseStep
     public CalculatorPageSteps validateCalculationsVolume(float expected)
     {
         return validateCalculationsVolume(String.valueOf(expected));
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultMargin()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().marginCalculations()),
+            0);
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultComission()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().commissionCalculations()),
+            0);
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultProfit()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().profitCalculations()),
+            0);
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultSwapLong()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().swapLongCalculations()),
+            0);
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultSwapShort()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().swapShortCalculations()),
+            0);
+        return this;
+    }
+    
+    public CalculatorPageSteps validateCalculationsResultVolume()
+    {
+        Assert.assertNotEquals(
+            0,
+            getResult(calculatorPage.formulas().volumeCalculations()),
+            0);
+        return this;
+    }
+    
+    private float getResult(SelenideElement element)
+    {
+        String[] parseArray = element.text().split(" ");
+        return Float.parseFloat(parseArray[parseArray.length - 2]);
     }
 }

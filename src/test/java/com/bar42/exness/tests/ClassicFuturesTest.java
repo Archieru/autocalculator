@@ -52,13 +52,13 @@ public class ClassicFuturesTest extends BaseTest
     }
     
     @Test
-    public void testMarginCalculator()
+    public void testMarginCalculations()
     {
         onCalculatorPage.validateCalculationsMargin(BASE_LOT_SIZE);
     }
     
     @Test
-    public void testComissionCalculator()
+    public void testComissionCalculations()
     {
         onCalculatorPage.validateCalculationsComission(BASE_LOT_SIZE);
     }
@@ -73,6 +73,30 @@ public class ClassicFuturesTest extends BaseTest
     public void testVolumeCalculations()
     {
         onCalculatorPage.validateCalculationsVolume(BASE_LOT_SIZE);
+    }
+    
+    @Test
+    public void testMarginCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultMargin();
+    }
+    
+    @Test
+    public void testComissionCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultComission();
+    }
+    
+    @Test
+    public void testProfitCalculatorResult()
+    {
+        onCalculatorPage.validateCalculationsResultProfit();
+    }
+    
+    @Test
+    public void testVolumeCalculationsResult()
+    {
+        onCalculatorPage.validateCalculationsResultVolume();
     }
     
     @Test
