@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 
 public class CalcRow extends BaseExtender
 {
-    public CalcRow(RowType type)
+    public CalcRow(CalcType type)
     {
         super(Selenide
             .$$(".container .calc-colForm>.ui-formRow")
@@ -15,11 +15,12 @@ public class CalcRow extends BaseExtender
         );
     }
     
-    public enum RowType
+    public enum CalcType
     {
         ACCOUNT("Тип счета"),
         INSTRUMENTS("Биржа"),
         SYMBOL("Форекс"),
+        NYSYMBOL("NYMEX"),
         LOT("Объем сделки"),
         LEVERAGE("Кредитное плечо"),
         CURRENCY("Валюта счета"),
@@ -27,7 +28,7 @@ public class CalcRow extends BaseExtender
         
         private final String text;
         
-        private RowType(final String text)
+        private CalcType(final String text)
         {
             this.text = text;
         }

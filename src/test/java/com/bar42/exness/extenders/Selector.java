@@ -21,7 +21,7 @@ public class Selector extends BaseExtender
         if (options.size() != 1)
         {
             throw new RuntimeException(
-                "There should be one '" + option + "' in [" + getSelectItems().toString() + "]"
+                "There should be one '" + option + "' in " + getSelectItems().toString()
             );
         }
         options.first().click();
