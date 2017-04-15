@@ -52,12 +52,6 @@ public class ClassicForexTest extends BaseTest
     }
     
     @Test
-    public void testComissionCalculator()
-    {
-        onCalculatorPage.validateCalculationsComission(BASE_LOT_SIZE);
-    }
-    
-    @Test
     public void testProfitCalculator()
     {
         onCalculatorPage.validateCalculationsProfit(BASE_LOT_SIZE);

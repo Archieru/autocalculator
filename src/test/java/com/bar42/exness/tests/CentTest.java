@@ -51,12 +51,6 @@ public class CentTest extends BaseTest
     }
 
     @Test
-    public void testComissionCalculator()
-    {
-        onCalculatorPage.validateCalculationsComission(BASE_LOT_SIZE);
-    }
-
-    @Test
     public void testProfitCalculator()
     {
         onCalculatorPage.validateCalculationsProfit(BASE_LOT_SIZE);
@@ -85,9 +79,10 @@ public class CentTest extends BaseTest
     {
         
         onCalculatorPage
-            .withSymbol("AUDCAD")
+            .withSymbol("AUDCADc")
             .withBaseCurrency("USD")
             .validateConversionPairs("USD")
+            .validateConversionPairs("USC")
             .validateConversionPairs("AUD")
             .validateConversionPairs("CAD");
     }
@@ -98,8 +93,9 @@ public class CentTest extends BaseTest
         
         onCalculatorPage
             .withSymbol("AUDCAD")
-            .withBaseCurrency("AUD")
+            .withBaseCurrency("AUC")
             .validateConversionPairs("AUD")
+            .validateConversionPairs("AUC")
             .validateConversionPairs("CAD");
     }
 }

@@ -28,6 +28,12 @@ public class ClassicFuturesTest extends BaseTest
     }
     
     @Test
+    public void testComission()
+    {
+        onCalculatorPage.validateComission();
+    }
+    
+    @Test
     public void testSwapLong()
     {
         onCalculatorPage.validateSwapLong();
@@ -64,33 +70,9 @@ public class ClassicFuturesTest extends BaseTest
     }
     
     @Test
-    public void testSwapLongCalculations()
-    {
-        onCalculatorPage.validateCalculationsSwapLong(BASE_LOT_SIZE);
-    }
-    
-    @Test
-    public void testSwapShortCalculations()
-    {
-        onCalculatorPage.validateCalculationsSwapShort(BASE_LOT_SIZE);
-    }
-    
-    @Test
     public void testVolumeCalculations()
     {
         onCalculatorPage.validateCalculationsVolume(BASE_LOT_SIZE);
-    }
-    
-    @Test
-    public void testDoubleTransfer()
-    {
-        
-        onCalculatorPage
-            .withSymbol("AUDCAD")
-            .withBaseCurrency("USD")
-            .validateConversionPairs("USD")
-            .validateConversionPairs("AUD")
-            .validateConversionPairs("CAD");
     }
     
     @Test
@@ -98,9 +80,8 @@ public class ClassicFuturesTest extends BaseTest
     {
         
         onCalculatorPage
-            .withSymbol("AUDCAD")
             .withBaseCurrency("AUD")
             .validateConversionPairs("AUD")
-            .validateConversionPairs("CAD");
+            .validateConversionPairs("USD");
     }
 }
