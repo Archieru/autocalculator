@@ -3,7 +3,7 @@ package com.bar42.exness.tests;
 import com.bar42.exness.pages.CalculatorPage;
 import com.bar42.exness.steps.CalculatorPageSteps;
 import com.codeborne.selenide.Configuration;
-import org.junit.BeforeClass;
+import org.testng.annotations.BeforeClass;
 
 public class BaseTest
 {

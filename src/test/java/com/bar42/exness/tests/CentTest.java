@@ -1,7 +1,8 @@
 package com.bar42.exness.tests;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class CentTest extends BaseTest
 {
@@ -9,7 +10,7 @@ public class CentTest extends BaseTest
     public static void beforeAll()
     {
         onCalculatorPage
-            .withAccountType("Cent")
+            .withAccountType("cent")
             .withLotSize(BASE_LOT_SIZE)
             .calculate();
     }

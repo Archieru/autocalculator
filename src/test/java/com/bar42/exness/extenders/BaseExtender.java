@@ -8,6 +8,7 @@ public class BaseExtender
     
     public BaseExtender(SelenideElement baseElement)
     {
+        if (null == baseElement) { throw new RuntimeException("Base element cannot be nullextender"); }
         this.baseElement = baseElement;
     }
     

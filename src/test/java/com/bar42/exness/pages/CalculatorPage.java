@@ -15,7 +15,7 @@ public class CalculatorPage extends BasePage
     @Override
     protected String getPageUrl()
     {
-        return "https://www.exness.eu/intl/ru/tools/calculator/,";
+        return "https://www.exness.eu/intl/ru/tools/calculator/";
     }
     
     public CalculationFormulasBlock formulas()
@@ -30,58 +30,49 @@ public class CalculatorPage extends BasePage
     
     public Selector accountTypeSelect()
     {
-        SelenideElement baseElement = new CalcRow(ACCOUNT)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(ACCOUNT).getElement();
         return new Selector(baseElement);
     }
 
     public Selector instrumentSelect()
     {
-        SelenideElement baseElement = new CalcRow(INSTRUMENTS)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(INSTRUMENTS).getElement();
         return new Selector(baseElement);
     }
 
     public Selector symbolSelect()
     {
-        SelenideElement baseElement = new CalcRow(SYMBOL)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(SYMBOL).getElement();
         return new Selector(baseElement);
     }
 
     public Selector symbolNySelect()
     {
-        SelenideElement baseElement = new CalcRow(NYSYMBOL)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(NYSYMBOL).getElement();
         return new Selector(baseElement);
     }
 
     public SelenideElement lotSizeInput()
     {
-        SelenideElement baseElement = new CalcRow(LOT)
-            .$_(".calc-colFormInput>.ui-input");
+        SelenideElement baseElement = new CalcRow(LOT).$_("input");
         return baseElement;
     }
 
     public Selector leverageSelect()
     {
-        SelenideElement baseElement = new CalcRow(LEVERAGE)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(LEVERAGE).getElement();
         return new Selector(baseElement);
     }
 
     public Selector currencieSelect()
     {
-        SelenideElement baseElement = new CalcRow(CURRENCY)
-            .$_(".calc-colFormInput>.ui-select");
+        SelenideElement baseElement = new CalcRow(CURRENCY).getElement();
         return new Selector(baseElement);
     }
 
     public SelenideElement calculateButton()
     {
-        SelenideElement baseElement = new CalcRow(CALCULATE)
-            .$_(".calc-colFormBtn>button");
-        return baseElement;
+        return $(".container .calc-colForm>.ui-formRow .calc-colFormBtn>button");
     }
     
     public ResultRow marginRow()

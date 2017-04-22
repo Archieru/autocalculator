@@ -2,13 +2,15 @@ package com.bar42.exness.steps;
 
 import com.bar42.exness.pages.CalculatorPage;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.Assert;
 
+import static com.codeborne.selenide.Condition.matchText;
 import static com.codeborne.selenide.Condition.text;
 
 public class CalculatorPageSteps extends BaseStep
 {
     private CalculatorPage calculatorPage = new CalculatorPage();
+    
+    
     
     public CalculatorPageSteps withAccountType(String type)
     {
@@ -63,74 +65,62 @@ public class CalculatorPageSteps extends BaseStep
     
     public CalculatorPageSteps validateMargin()
     {
-        Assert.assertNotEquals(0, calculatorPage.marginRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateMargin(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.marginRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateProfit()
     {
-        Assert.assertNotEquals(0, calculatorPage.profitRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateProfit(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.profitRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateComission()
     {
-        Assert.assertNotEquals(0, calculatorPage.comissionRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateComission(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.comissionRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateSwapLong()
     {
-        Assert.assertNotEquals(0, calculatorPage.swapLongRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateSwapLong(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.swapLongRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateSwapShort()
     {
-        Assert.assertNotEquals(0, calculatorPage.swapShortRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateSwapShort(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.swapShortRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
 
     public CalculatorPageSteps validateVolume()
     {
-        Assert.assertNotEquals(0, calculatorPage.volumeRow().getValue());
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
     
     public CalculatorPageSteps validateVolume(long expected)
     {
-        Assert.assertEquals(expected, calculatorPage.volumeRow().getValue(), 0);
-        return this;
+        return validateCalculation(calculatorPage.marginRow().getElement());
     }
     
     public CalculatorPageSteps validateCalculationsMargin(String expected)
@@ -207,61 +197,43 @@ public class CalculatorPageSteps extends BaseStep
     
     public CalculatorPageSteps validateCalculationsResultMargin()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().marginCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().marginCalculations());
         return this;
     }
     
     public CalculatorPageSteps validateCalculationsResultComission()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().commissionCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().commissionCalculations());
         return this;
     }
     
     public CalculatorPageSteps validateCalculationsResultProfit()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().profitCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().profitCalculations());
         return this;
     }
     
     public CalculatorPageSteps validateCalculationsResultSwapLong()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().swapLongCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().swapLongCalculations());
         return this;
     }
     
     public CalculatorPageSteps validateCalculationsResultSwapShort()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().swapShortCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().swapShortCalculations());
         return this;
     }
     
     public CalculatorPageSteps validateCalculationsResultVolume()
     {
-        Assert.assertNotEquals(
-            0,
-            getResult(calculatorPage.formulas().volumeCalculations()),
-            0);
+        validateCalculation(calculatorPage.formulas().volumeCalculations());
         return this;
     }
     
-    private float getResult(SelenideElement element)
+    private CalculatorPageSteps validateCalculation(SelenideElement element)
     {
-        String[] parseArray = element.text().split(" ");
-        return Float.parseFloat(parseArray[parseArray.length - 2]);
+        element.shouldNot(matchText("[^0-9\\.,]0[\\.,]?[0]*[^0-9\\.,]"));
+        return this;
     }
 }

@@ -1,17 +1,13 @@
 package com.bar42.exness.extenders;
 
-import com.codeborne.selenide.Selenide;
-
-import static com.codeborne.selenide.Condition.text;
-
+import static com.codeborne.selenide.Selenide.$;
 
 public class ResultRow extends BaseExtender
 {
     public ResultRow(ResultType type)
     {
-        super(Selenide
-            .$$(".container .calc-colResult>.calc-colResultRow")
-            .findBy(text( type.toString() ))
+        super(
+            $(".container .calc-colResult>.calc-colResultRow #" + type)
         );
     }
     
@@ -20,19 +16,14 @@ public class ResultRow extends BaseExtender
         return $_(".calc-colResultValue").text();
     }
     
-    public float getValue()
-    {
-        return Float.parseFloat(getResult().split(" ")[0]);
-    }
-    
     public enum ResultType
     {
-        MARGIN("Маржа"),
-        PROFIT("Стоимость пункта"),
-        COMISSION("Комиссия"),
-        SWAPLONG("Своп лонг"),
-        SWAPSHORT("Своп шорт"),
-        VOLUME("Объем");
+        MARGIN("margin"),
+        PROFIT("profit"),
+        COMISSION("commission"),
+        SWAPLONG("swap_long"),
+        SWAPSHORT("swap_short"),
+        VOLUME("volumemlnusd");
         
         private final String text;
         

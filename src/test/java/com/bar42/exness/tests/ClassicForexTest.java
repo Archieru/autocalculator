@@ -1,7 +1,7 @@
 package com.bar42.exness.tests;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class ClassicForexTest extends BaseTest
 {
@@ -9,8 +9,8 @@ public class ClassicForexTest extends BaseTest
     public static void beforeAll()
     {
         onCalculatorPage
-            .withAccountType("Mini, Classic, ECN")
-            .withInstrument("Forex - Foreign Exchange")
+            .withAccountType("common")
+            .withInstrument("Forex")
             .withLotSize(BASE_LOT_SIZE)
             .calculate();
     }

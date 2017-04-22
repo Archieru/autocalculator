@@ -2,29 +2,25 @@ package com.bar42.exness.extenders;
 
 import com.codeborne.selenide.Selenide;
 
-import static com.codeborne.selenide.Condition.text;
-
-
 public class CalcRow extends BaseExtender
 {
     public CalcRow(CalcType type)
     {
         super(Selenide
-            .$$(".container .calc-colForm>.ui-formRow")
-            .findBy(text( type.toString() ))
+            .$(".container .calc-colForm>.ui-formRow [name=" + type + "]")
+            .parent()
         );
     }
     
     public enum CalcType
     {
-        ACCOUNT("Тип счета"),
-        INSTRUMENTS("Биржа"),
-        SYMBOL("Форекс"),
-        NYSYMBOL("NYMEX"),
-        LOT("Объем сделки"),
-        LEVERAGE("Кредитное плечо"),
-        CURRENCY("Валюта счета"),
-        CALCULATE("Расчет");
+        ACCOUNT("account"),
+        INSTRUMENTS("Instruments"),
+        SYMBOL("SymbolsForex"),
+        NYSYMBOL("SymbolsNYMEX"),
+        LOT("Lot"),
+        LEVERAGE("Leverage"),
+        CURRENCY("Currency");
         
         private final String text;
         
